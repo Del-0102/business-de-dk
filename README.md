@@ -1,35 +1,72 @@
 # Business DE-DK – Custom WordPress Theme
 
-Eigenes Theme für das 2. Semester Examensprojekt. HTML/CSS/PHP, kein Page-Builder.
-Zwei Säulen laut Kunde: **Media Channel** (Interviews) & **Network Database** (Stakeholder).
+Custom theme for the 2nd semester exam project. Built with HTML, CSS and PHP, without using a page builder.
 
-## Schnellstart
-1. Ordner `business-de-dk` nach `wp-content/themes/` kopieren.
-2. WP-Admin → **Design → Themes → Business DE-DK aktivieren**.
-3. WICHTIG: **Einstellungen → Permalinks → Speichern** (aktiviert „schöne“ URLs für die Custom Post Types).
-4. Seiten anlegen mit *exakt* diesen Slugs (Permalink):
-   `network`, `interviews`, `events`, `about`, `gallery`, `join`
-5. **Einstellungen → Lesen** → Startseite zeigt „Eine statische Seite“ → eine leere Seite „Home“ wählen
-   (oder Standard lassen – `front-page.php` greift in beiden Fällen).
+The project focuses on the two main pillars defined by the client:
 
-## Inhalte pflegen (CMS)
-Im linken Admin-Menü erscheinen drei neue Bereiche:
-- **Stakeholder** → Netzwerk-Mitglieder (Titel = Name, Editor = „About“-Text, Auszug = Kurzbio in der Card,
-  Felder: Rolle, Firma, Standort, Land DE/DK, Sprachen, Mitglied seit; Branche über Taxonomie „Branchen“).
-- **Interviews** → Videos (Felder: Sprecher, Firma, Dauer, Video-URL; Beitragsbild = Thumbnail).
-- **Events** → Termine (Felder: Datum `2026-05-15`, Ort; Kategorie über Taxonomie).
+- **Media Channel** – interviews and video content
+- **Network Database** – stakeholders and network members
 
-Solange noch keine Inhalte angelegt sind, zeigen Network/Interviews/Events Beispielkarten an.
+## Quick Start
 
-## Dateien
-- `style.css` – Theme-Header + komplettes CSS
-- `functions.php` – Setup, Assets, Custom Post Types, Meta-Boxen, Helfer
-- `header.php` / `footer.php` – Kopf & Fuß (auf jeder Seite)
-- `front-page.php` – Startseite
-- `page-{network|interviews|events|about|gallery|join}.php` – Unterseiten
-- `single-stakeholder.php` – Profilseite
+1. Copy the folder `business-de-dk` into `wp-content/themes/`.
+2. Go to **WP Admin → Appearance → Themes** and activate **Business DE-DK**.
+3. Important: Go to **Settings → Permalinks → Save Changes**.  
+   This activates clean URLs for the Custom Post Types.
+4. Create pages with exactly these slugs/permalinks:
+
+   - `network`
+   - `interviews`
+   - `events`
+   - `about`
+   - `gallery`
+   - `join`
+
+5. Go to **Settings → Reading → Your homepage displays → A static page** and select an empty page called **Home**.  
+   Alternatively, you can keep the default setting, since `front-page.php` works in both cases.
+
+## Managing Content in the CMS
+
+Three new sections appear in the left WordPress admin menu:
+
+### Stakeholders
+
+Used for network members.
+
+- **Title** = Name
+- **Editor** = About text
+- **Excerpt** = Short bio shown on the card
+- **Fields:** Role, company, location, country DE/DK, languages, member since
+- **Industry:** Managed through the taxonomy **Industries**
+
+### Interviews
+
+Used for video content.
+
+- **Fields:** Speaker, company, duration, video URL
+- **Featured image** = Video thumbnail
+
+### Events
+
+Used for upcoming events.
+
+- **Fields:** Date, for example `2026-05-15`, and location
+- **Category:** Managed through a taxonomy
+
+As long as no real content has been added yet, the Network, Interviews and Events pages display example cards.
+
+## Files
+
+- `style.css` – Theme header and complete CSS
+- `functions.php` – Theme setup, assets, Custom Post Types, meta boxes and helper functions
+- `header.php` / `footer.php` – Header and footer used across the website
+- `front-page.php` – Homepage
+- `page-{network|interviews|events|about|gallery|join}.php` – Subpages
+- `single-stakeholder.php` – Individual stakeholder profile page
 - `assets/css`, `assets/js`, `assets/images`
 
-## Hinweis Sprachumschalter
-Der EN-Button ist aktuell ein UI-Platzhalter. Für echtes DE/DK/EN im Report
-**Polylang** (kostenlos) erwähnen/empfehlen – das ist kein Page-Builder und damit erlaubt.
+## Language Switcher Note
+
+The EN button is currently a UI placeholder.
+
+For a real DE/DK/EN multilingual setup, we recommend mentioning **Polylang** in the report. Polylang is free and is not a page builder, so it is allowed for this project.
