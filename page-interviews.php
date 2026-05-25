@@ -1,6 +1,6 @@
 <?php
 /**
- * page-interviews.php – Media Channel (Seite mit Slug "interviews").
+ * page-interviews.php – Media Channel (Slug "interviews"), übersetzt.
  * @package business-de-dk
  */
 get_header();
@@ -16,24 +16,24 @@ $demo = array(
 <section class="hero hero-inner">
 	<div class="container">
 		<div>
-			<p class="eyebrow">Media Channel</p>
-			<h1>Interviews</h1>
-			<p>In-depth conversations with stakeholders from the DE-DK border region.</p>
+			<p class="eyebrow"><?php echo esc_html( bdk_t('media_channel') ); ?></p>
+			<h1><?php echo esc_html( bdk_t('nav_interviews') ); ?></h1>
+			<p><?php echo esc_html( bdk_t('interviews_desc') ); ?></p>
 		</div>
-		<div class="stat-box"><div><div class="num">24</div><div class="lbl">Videos</div></div></div>
+		<div class="stat-box"><div><div class="num">24</div><div class="lbl"><?php echo esc_html( bdk_t('stat_videos') ); ?></div></div></div>
 	</div>
 </section>
 
 <div class="filter-bar" data-filter-group data-target="#videoGrid">
 	<div class="container">
 		<div class="pills">
-			<button class="pill active" data-value="all">All</button>
-			<button class="pill" data-value="Business">Business</button>
-			<button class="pill" data-value="Innovation">Innovation</button>
-			<button class="pill" data-value="Labour Market">Labour Market</button>
-			<button class="pill" data-value="Cross-border">Cross-border</button>
+			<button class="pill active" data-value="all"><?php echo esc_html( bdk_t('filter_all') ); ?></button>
+			<button class="pill" data-value="Business"><?php echo esc_html( bdk_t('cat_business') ); ?></button>
+			<button class="pill" data-value="Innovation"><?php echo esc_html( bdk_t('cat_innovation') ); ?></button>
+			<button class="pill" data-value="Labour Market"><?php echo esc_html( bdk_t('cat_labour') ); ?></button>
+			<button class="pill" data-value="Cross-border"><?php echo esc_html( bdk_t('cat_crossborder') ); ?></button>
 		</div>
-		<select class="sort-select"><option>Latest</option><option>Oldest</option></select>
+		<select class="sort-select"><option><?php echo esc_html( bdk_t('sort_latest') ); ?></option><option><?php echo esc_html( bdk_t('sort_oldest') ); ?></option></select>
 	</div>
 </div>
 
@@ -53,7 +53,7 @@ $demo = array(
 						</div>
 						<div class="video-body">
 							<h3><?php the_title(); ?></h3>
-							<div class="video-foot"><span class="meta"><?php echo esc_html( bdk_meta('speaker').' · '.bdk_meta('company') ); ?></span><span class="link-arrow" style="margin:0;">Watch &rarr;</span></div>
+							<div class="video-foot"><span class="meta"><?php echo esc_html( bdk_meta('speaker').' · '.bdk_meta('company') ); ?></span><span class="link-arrow" style="margin:0;"><?php echo esc_html( bdk_t('watch') ); ?></span></div>
 						</div>
 					</a>
 				<?php endwhile; wp_reset_postdata();
@@ -66,13 +66,13 @@ $demo = array(
 						</div>
 						<div class="video-body">
 							<h3><?php echo esc_html($v['title']); ?></h3>
-							<div class="video-foot"><span class="meta"><?php echo esc_html($v['speaker'].' · '.$v['company']); ?></span><span class="link-arrow" style="margin:0;">Watch &rarr;</span></div>
+							<div class="video-foot"><span class="meta"><?php echo esc_html($v['speaker'].' · '.$v['company']); ?></span><span class="link-arrow" style="margin:0;"><?php echo esc_html( bdk_t('watch') ); ?></span></div>
 						</div>
 					</a>
 				<?php endforeach;
 			endif; ?>
 		</div>
-		<div class="load-more"><button class="btn btn-white" style="border:1px solid var(--line);">Load more &darr;</button></div>
+		<div class="load-more"><button class="btn btn-white" style="border:1px solid var(--line);"><?php echo esc_html( bdk_t('load_more') ); ?></button></div>
 	</div>
 </section>
 

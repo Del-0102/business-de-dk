@@ -6,22 +6,24 @@
 ?>
 </main><!-- #content -->
 
-<!-- CTA-Band "Ready to connect?" -->
+<!-- CTA-Band "Ready to connect?" (übersetzt) -->
 <section class="cta-band">
 	<div class="container">
-		<p class="eyebrow">Cross-Border Network</p>
-		<h2>Ready to connect?</h2>
-		<p>Join our growing cross-border business network today.</p>
-		<a class="btn btn-light" href="<?php echo esc_url( bdk_page_url('join') ); ?>">Join the Network &rarr;</a>
+		<p class="eyebrow"><?php echo esc_html( bdk_t('cta_eyebrow') ); ?></p>
+		<h2><?php echo esc_html( bdk_t('cta_h2') ); ?></h2>
+		<p><?php echo esc_html( bdk_t('cta_sub') ); ?></p>
+		<a class="btn btn-light" href="<?php echo esc_url( bdk_page_url('join') ); ?>"><?php echo esc_html( bdk_t('cta_btn') ); ?></a>
 	</div>
 </section>
 
-<!-- Footer -->
+<!-- Footer mit Wortmarke -->
 <footer class="site-footer">
 	<div class="container">
 		<div class="footer-top">
 			<div class="footer-brand">
-				<div class="brand-name">Business region</div>
+				<img class="footer-wordmark"
+				     src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Wordmark_Branding.png' ); ?>"
+				     alt="Business region" style="height:30px;width:auto;display:block;margin-bottom:6px;">
 				<small>business-region.eu</small>
 			</div>
 			<div class="social">
@@ -36,7 +38,7 @@
 				</a>
 			</div>
 		</div>
-		<p class="footer-copy">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Business DE-DK &middot; All rights reserved</p>
+		<p class="footer-copy">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Business DE-DK &middot; <?php echo esc_html( bdk_t('footer_rights') ); ?></p>
 	</div>
 </footer>
 

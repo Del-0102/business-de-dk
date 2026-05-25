@@ -232,3 +232,51 @@ add_action( 'wp_head', 'bdk_meta_description', 1 );
    ========================================================= */
 function bdk_excerpt_length( $len ) { return 22; }
 add_filter( 'excerpt_length', 'bdk_excerpt_length' );
+
+/* =========================================================
+   9. ÜBERSETZUNG (DE / DK / EN) – eigenes i18n ohne Plugin
+   ========================================================= */
+
+/** Erlaubte Sprachen */
+function bdk_langs() { return array( 'en', 'de', 'dk' ); }
+
+/** Aktuelle Sprache ermitteln: ?lang=… > Cookie > Standard 'en' */
+function bdk_current_lang() {
+	if ( isset( $_GET['lang'] ) && in_array( $_GET['lang'], bdk_langs(), true ) ) {
+		return $_GET['lang'];
+	}
+	if ( isset( $_COOKIE['bdk_lang'] ) && in_array( $_COOKIE['bdk_lang'], bdk_langs(), true ) ) {
+		return $_COOKIE['bdk_lang'];
+	}
+	return 'en';
+}
+
+/** Sprachwahl als Cookie speichern (läuft auf 'init', also vor jeder Ausgabe) */
+function bdk_set_lang_cookie() {
+	if ( isset( $_GET['lang'] ) && in_array( $_GET['lang'], bdk_langs(), true ) ) {
+		setcookie( 'bdk_lang', $_GET['lang'], time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
+	}
+}
+add_action( 'init', 'bdk_set_lang_cookie' );
+
+/** ISO-Code für das <html lang=""> Attribut (dk -> da) */
+function bdk_html_lang() {
+	$map = array( 'en' => 'en', 'de' => 'de', 'dk' => 'da' );
+	$cur = bdk_current_lang();
+	return isset( $map[ $cur ] ) ? $map[ $cur ] : 'en';
+}
+
+/**
+ * Übersetzungs-Helfer: bdk_t('key')
+ * Gibt den Text in der aktuellen Sprache zurück (Fallback: EN, sonst der Key).
+ */
+function bdk_t( $key ) {
+	static $strings = null;
+	if ( null === $strings ) {
+		$strings = include get_template_directory() . '/inc/translations.php';
+	}
+	$lang = bdk_current_lang();
+	if ( isset( $strings[ $lang ][ $key ] ) ) { return $strings[ $lang ][ $key ]; }
+	if ( isset( $strings['en'][ $key ] ) )    { return $strings['en'][ $key ]; }
+	return $key;
+}

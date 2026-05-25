@@ -1,6 +1,6 @@
 <?php
 /**
- * page-join.php – "Join the Network" (Seite mit Slug "join").
+ * page-join.php – "Join the Network" (Slug "join"), übersetzt.
  * @package business-de-dk
  */
 get_header();
@@ -9,9 +9,9 @@ get_header();
 <section class="hero hero-inner">
 	<div class="container">
 		<div>
-			<p class="eyebrow">Network</p>
-			<h1>Join the Network</h1>
-			<p>Become part of the cross-border business community connecting entrepreneurs across Germany and Denmark.</p>
+			<p class="eyebrow"><?php echo esc_html( bdk_t('nav_network') ); ?></p>
+			<h1><?php echo esc_html( bdk_t('join_h1') ); ?></h1>
+			<p><?php echo esc_html( bdk_t('join_desc') ); ?></p>
 		</div>
 	</div>
 </section>
@@ -19,27 +19,27 @@ get_header();
 <section class="section section-soft">
 	<div class="container">
 		<div class="form-card">
-			<h2>Join our network</h2>
-			<p class="sub">Connect with businesses across borders.</p>
+			<h2><?php echo esc_html( bdk_t('join_card_title') ); ?></h2>
+			<p class="sub"><?php echo esc_html( bdk_t('join_card_sub') ); ?></p>
 
 			<form method="post" action="#">
 				<div class="field">
-					<label for="jn-name">Full name</label>
-					<input type="text" id="jn-name" name="full_name" placeholder="Full name" required>
+					<label for="jn-name"><?php echo esc_html( bdk_t('f_fullname') ); ?></label>
+					<input type="text" id="jn-name" name="full_name" placeholder="<?php echo esc_attr( bdk_t('f_fullname') ); ?>" required>
 				</div>
 				<div class="field">
-					<label for="jn-company">Company / Organisation</label>
-					<input type="text" id="jn-company" name="company" placeholder="Company/Organisation">
+					<label for="jn-company"><?php echo esc_html( bdk_t('f_company') ); ?></label>
+					<input type="text" id="jn-company" name="company" placeholder="<?php echo esc_attr( bdk_t('f_company') ); ?>">
 				</div>
 				<div class="field">
-					<label for="jn-email">E-mail</label>
-					<input type="email" id="jn-email" name="email" placeholder="E-Mail" required>
+					<label for="jn-email"><?php echo esc_html( bdk_t('f_email') ); ?></label>
+					<input type="email" id="jn-email" name="email" placeholder="<?php echo esc_attr( bdk_t('f_email') ); ?>" required>
 				</div>
 				<div class="field">
-					<label for="jn-msg">Message (optional)</label>
-					<textarea id="jn-msg" name="message" placeholder="Message"></textarea>
+					<label for="jn-msg"><?php echo esc_html( bdk_t('f_message') ); ?></label>
+					<textarea id="jn-msg" name="message" placeholder="<?php echo esc_attr( bdk_t('f_message') ); ?>"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary btn-block">Submit</button>
+				<button type="submit" class="btn btn-primary btn-block"><?php echo esc_html( bdk_t('f_submit') ); ?></button>
 			</form>
 		</div>
 	</div>

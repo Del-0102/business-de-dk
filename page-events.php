@@ -1,6 +1,6 @@
 <?php
 /**
- * page-events.php – Events (Seite mit Slug "events").
+ * page-events.php – Events (Slug "events"), übersetzt.
  * @package business-de-dk
  */
 get_header();
@@ -16,24 +16,24 @@ $demo = array(
 <section class="hero hero-inner">
 	<div class="container">
 		<div>
-			<p class="eyebrow">Events</p>
-			<h1>Events</h1>
-			<p>Cross-border forums, workshops and networking events across the DE-DK region.</p>
+			<p class="eyebrow"><?php echo esc_html( bdk_t('nav_events') ); ?></p>
+			<h1><?php echo esc_html( bdk_t('nav_events') ); ?></h1>
+			<p><?php echo esc_html( bdk_t('events_desc') ); ?></p>
 		</div>
-		<div class="stat-box"><div><div class="num">12</div><div class="lbl">Events</div></div></div>
+		<div class="stat-box"><div><div class="num">12</div><div class="lbl"><?php echo esc_html( bdk_t('stat_events') ); ?></div></div></div>
 	</div>
 </section>
 
 <div class="filter-bar" data-filter-group data-target="#eventsGrid">
 	<div class="container">
 		<div class="pills">
-			<button class="pill active" data-value="all">All</button>
-			<button class="pill" data-value="Business">Business</button>
-			<button class="pill" data-value="Networking">Networking</button>
-			<button class="pill" data-value="Forum">Forum</button>
-			<button class="pill" data-value="Workshop">Workshop</button>
+			<button class="pill active" data-value="all"><?php echo esc_html( bdk_t('filter_all') ); ?></button>
+			<button class="pill" data-value="Business"><?php echo esc_html( bdk_t('cat_business') ); ?></button>
+			<button class="pill" data-value="Networking"><?php echo esc_html( bdk_t('cat_networking') ); ?></button>
+			<button class="pill" data-value="Forum"><?php echo esc_html( bdk_t('cat_forum') ); ?></button>
+			<button class="pill" data-value="Workshop"><?php echo esc_html( bdk_t('cat_workshop') ); ?></button>
 		</div>
-		<select class="sort-select"><option>Latest</option><option>Oldest</option></select>
+		<select class="sort-select"><option><?php echo esc_html( bdk_t('sort_latest') ); ?></option><option><?php echo esc_html( bdk_t('sort_oldest') ); ?></option></select>
 	</div>
 </div>
 
@@ -52,7 +52,7 @@ $demo = array(
 						<div class="d"><?php echo $d ? esc_html(date('d',$d)) : '–'; ?></div>
 						<h3><?php the_title(); ?></h3>
 						<div class="loc"><?php echo esc_html( bdk_meta('location') ); ?></div>
-						<a class="reg" href="<?php the_permalink(); ?>">Register &rarr;</a>
+						<a class="reg" href="<?php the_permalink(); ?>"><?php echo esc_html( bdk_t('register') ); ?></a>
 					</article>
 				<?php endwhile; wp_reset_postdata();
 			else :
@@ -63,12 +63,12 @@ $demo = array(
 						<div class="d"><?php echo esc_html(date('d',$d)); ?></div>
 						<h3><?php echo esc_html($e['title']); ?></h3>
 						<div class="loc"><?php echo esc_html($e['loc']); ?></div>
-						<a class="reg" href="#">Register &rarr;</a>
+						<a class="reg" href="#"><?php echo esc_html( bdk_t('register') ); ?></a>
 					</article>
 				<?php endforeach;
 			endif; ?>
 		</div>
-		<div class="load-more"><button class="btn btn-white" style="border:1px solid var(--line);">Load more &darr;</button></div>
+		<div class="load-more"><button class="btn btn-white" style="border:1px solid var(--line);"><?php echo esc_html( bdk_t('load_more') ); ?></button></div>
 	</div>
 </section>
 

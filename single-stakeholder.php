@@ -1,6 +1,6 @@
 <?php
 /**
- * single-stakeholder.php – Profilseite eines Netzwerk-Mitglieds.
+ * single-stakeholder.php – Profilseite (übersetzt).
  * @package business-de-dk
  */
 get_header();
@@ -13,10 +13,9 @@ while ( have_posts() ) : the_post();
 	$sectors = wp_get_post_terms( get_the_ID(), 'sector', array('fields'=>'names') );
 ?>
 
-<!-- HERO -->
 <section class="hero hero-inner" style="padding-bottom:40px;">
 	<div class="container" style="display:block;">
-		<a class="back-link" href="<?php echo esc_url( bdk_page_url('network') ); ?>">&larr; Back to Network</a>
+		<a class="back-link" href="<?php echo esc_url( bdk_page_url('network') ); ?>"><?php echo esc_html( bdk_t('back_network') ); ?></a>
 		<div class="profile-head">
 			<span class="avatar"><?php echo esc_html( bdk_initials($name) ); ?></span>
 			<div style="flex:1;">
@@ -25,21 +24,20 @@ while ( have_posts() ) : the_post();
 			</div>
 		</div>
 		<div class="profile-actions">
-			<a class="btn btn-light" href="#connect">Connect</a>
-			<a class="btn btn-outline" href="#contact">Contact</a>
+			<a class="btn btn-light" href="#connect"><?php echo esc_html( bdk_t('btn_connect') ); ?></a>
+			<a class="btn btn-outline" href="#contact"><?php echo esc_html( bdk_t('btn_contact') ); ?></a>
 		</div>
 	</div>
 </section>
 
-<!-- INHALT -->
 <section class="section">
 	<div class="container profile-layout">
 		<div>
-			<h2>About</h2>
+			<h2><?php echo esc_html( bdk_t('about_label') ); ?></h2>
 			<div class="about-text"><?php the_content(); ?></div>
 
 			<?php if ( ! empty( $sectors ) ) : ?>
-				<h2 style="margin-top:34px;">Sectors &amp; Interests</h2>
+				<h2 style="margin-top:34px;"><?php echo esc_html( bdk_t('sectors_interests') ); ?></h2>
 				<div class="tag-list">
 					<?php foreach ( $sectors as $s ) : ?>
 						<span class="tag"><?php echo esc_html( $s ); ?></span>
@@ -49,11 +47,11 @@ while ( have_posts() ) : the_post();
 		</div>
 
 		<aside class="details-box">
-			<h3>Details</h3>
+			<h3><?php echo esc_html( bdk_t('details_label') ); ?></h3>
 			<dl>
-				<dt>Member since</dt><dd><?php echo esc_html( bdk_meta('member_since') ?: '—' ); ?></dd>
-				<dt>Location</dt><dd><?php echo esc_html( $loc ?: '—' ); ?></dd>
-				<dt>Language</dt><dd><?php echo esc_html( bdk_meta('languages') ?: '—' ); ?></dd>
+				<dt><?php echo esc_html( bdk_t('member_since') ); ?></dt><dd><?php echo esc_html( bdk_meta('member_since') ?: '—' ); ?></dd>
+				<dt><?php echo esc_html( bdk_t('location_label') ); ?></dt><dd><?php echo esc_html( $loc ?: '—' ); ?></dd>
+				<dt><?php echo esc_html( bdk_t('language_label') ); ?></dt><dd><?php echo esc_html( bdk_meta('languages') ?: '—' ); ?></dd>
 			</dl>
 		</aside>
 	</div>

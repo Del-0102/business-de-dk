@@ -1,7 +1,7 @@
 <?php
 /**
- * page-gallery.php – Photo Gallery (Seite mit Slug "gallery").
- * Tipp: Boxen später durch echte Bilder aus der Mediathek ersetzen.
+ * page-gallery.php – Photo Gallery (Slug "gallery"), übersetzt.
+ * Tipp: Boxen später durch echte Bilder ersetzen.
  * @package business-de-dk
  */
 get_header();
@@ -9,8 +9,8 @@ get_header();
 
 <section class="hero hero-inner" style="padding-bottom:40px;">
 	<div class="container" style="display:block;">
-		<h1>Photo Gallery</h1>
-		<p>Moments from events, forums, and network meetings across the DE-DK region.</p>
+		<h1><?php echo esc_html( bdk_t('gallery_h1') ); ?></h1>
+		<p><?php echo esc_html( bdk_t('gallery_desc') ); ?></p>
 	</div>
 </section>
 

@@ -1,11 +1,10 @@
 <?php
 /**
- * page-network.php – Network Database (Seite mit Slug "network").
+ * page-network.php – Network Database (Slug "network"), übersetzt.
  * @package business-de-dk
  */
 get_header();
 
-// Beispieldaten, falls noch keine Stakeholder im Backend angelegt wurden.
 $demo = array(
 	array('name'=>'Anna Schultz','role'=>'CEO & Founder','company'=>'NordTech GmbH','country'=>'DE','bio'=>'Building cross-border digital infrastructure connecting northern German SMEs with Scandinavian partners.','tag'=>'Technology'),
 	array('name'=>'Lars Mikkelsen','role'=>'Research Director','company'=>'Univ. of Southern Denmark','country'=>'DK','bio'=>'Leading research into sustainable agriculture and food innovation in the Jutland-Funen region.','tag'=>'Education'),
@@ -16,43 +15,41 @@ $demo = array(
 );
 ?>
 
-<!-- HERO -->
 <section class="hero hero-inner">
 	<div class="container">
 		<div>
-			<p class="eyebrow">Network</p>
-			<h1>Business Network</h1>
-			<p>Connect with entrepreneurs, institutions and cross-border stakeholders from the DE-DK border region.</p>
+			<p class="eyebrow"><?php echo esc_html( bdk_t('nav_network') ); ?></p>
+			<h1><?php echo esc_html( bdk_t('net_h1') ); ?></h1>
+			<p><?php echo esc_html( bdk_t('net_desc') ); ?></p>
 		</div>
 		<div class="stat-box">
-			<div><div class="num">240+</div><div class="lbl">Members</div></div>
-			<div><div class="num">3</div><div class="lbl">Countries</div></div>
-			<div><div class="num">18</div><div class="lbl">Sectors</div></div>
+			<div><div class="num">240+</div><div class="lbl"><?php echo esc_html( bdk_t('stat_members') ); ?></div></div>
+			<div><div class="num">3</div><div class="lbl"><?php echo esc_html( bdk_t('stat_countries') ); ?></div></div>
+			<div><div class="num">18</div><div class="lbl"><?php echo esc_html( bdk_t('stat_sectors') ); ?></div></div>
 		</div>
 	</div>
 </section>
 
-<!-- FILTER -->
 <div class="filter-bar" data-filter-group data-target="#memberGrid">
 	<div class="container">
 		<label class="search-field">
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
-			<input type="search" placeholder="Search by name, company…" data-search-target="#memberGrid">
+			<input type="search" placeholder="<?php echo esc_attr( bdk_t('net_search_ph') ); ?>" data-search-target="#memberGrid">
 		</label>
 		<div class="pills">
-			<button class="pill active" data-value="all">All</button>
-			<button class="pill" data-value="Technology">Technology</button>
-			<button class="pill" data-value="Agriculture">Agriculture</button>
-			<button class="pill" data-value="Maritime">Maritime</button>
-			<button class="pill" data-value="Energy">Energy</button>
-			<button class="pill" data-value="Education">Education</button>
+			<button class="pill active" data-value="all"><?php echo esc_html( bdk_t('filter_all') ); ?></button>
+			<button class="pill" data-value="Technology"><?php echo esc_html( bdk_t('sec_technology') ); ?></button>
+			<button class="pill" data-value="Agriculture"><?php echo esc_html( bdk_t('sec_agriculture') ); ?></button>
+			<button class="pill" data-value="Maritime"><?php echo esc_html( bdk_t('sec_maritime') ); ?></button>
+			<button class="pill" data-value="Energy"><?php echo esc_html( bdk_t('sec_energy') ); ?></button>
+			<button class="pill" data-value="Education"><?php echo esc_html( bdk_t('sec_education') ); ?></button>
 		</div>
 	</div>
 </div>
 
 <section class="section" style="padding-top:0;">
 	<div class="container">
-		<div class="results-info"><span>Showing 240 members</span><span>Sort by: Relevance</span></div>
+		<div class="results-info"><span><?php echo esc_html( bdk_t('showing_members') ); ?></span><span><?php echo esc_html( bdk_t('sort_relevance') ); ?></span></div>
 
 		<div class="member-grid" id="memberGrid">
 			<?php
@@ -78,12 +75,11 @@ $demo = array(
 						<p class="bio"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 24 ) ); ?></p>
 						<div class="member-foot">
 							<?php if(!empty($sectors)): ?><span class="tag"><?php echo esc_html($sectors[0]); ?></span><?php else: ?><span></span><?php endif; ?>
-							<span class="link-arrow" style="margin:0;">View Profile &rarr;</span>
+							<span class="link-arrow" style="margin:0;"><?php echo esc_html( bdk_t('view_profile') ); ?></span>
 						</div>
 					</a>
 				<?php endwhile; wp_reset_postdata();
 			else :
-				// Fallback: Beispiel-Cards
 				foreach ( $demo as $m ) : ?>
 					<a class="member-card" href="#" data-cats="<?php echo esc_attr($m['tag']); ?>" data-search="<?php echo esc_attr($m['name'].' '.$m['company']); ?>">
 						<div class="member-top">
@@ -97,7 +93,7 @@ $demo = array(
 						<p class="bio"><?php echo esc_html($m['bio']); ?></p>
 						<div class="member-foot">
 							<span class="tag"><?php echo esc_html($m['tag']); ?></span>
-							<span class="link-arrow" style="margin:0;">View Profile &rarr;</span>
+							<span class="link-arrow" style="margin:0;"><?php echo esc_html( bdk_t('view_profile') ); ?></span>
 						</div>
 					</a>
 				<?php endforeach;
